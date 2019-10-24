@@ -1,0 +1,18 @@
+<h1>What do you want in your mix?</h1>
+
+<%= simple_form_for([@cocktail, @dose]) do |f| %>
+  <% if @dose.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @dose.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <%= f.input :description %>
+    <%= f.association :ingredient %>
+    <%= f.submit "Add into my cocktail!", class: "btn btn-primary" %>
+  <% end %>
+ <% end %>
+
