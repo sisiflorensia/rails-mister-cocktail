@@ -9,6 +9,8 @@
     </div>
   <% else %>
     <%= f.input :name %>
-    <%= f.submit "Mix my cocktail!", class: "btn btn-primary" %>
+    <%= f.input :url %>
+    <%= f.submit "Mix my cocktail!", class: "btn btn-flat" %>
+    <%= link_to "Cancel", cocktails_path, class: "btn btn-ghost" %>
   <% end %>
  <% end %>

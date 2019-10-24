@@ -1,12 +1,29 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  padding: 0px 20px;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.logo {
+  text-align: center;
+  margin: 12px 0 0 0;
+}
+
+.logo a {
+  font-family: 'Sacramento', cursive;
+  font-size: 36px;
+  color:  #CFB53B;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  text-decoration: none;
+}
+
+.logo p {
+  margin: 0;
 }

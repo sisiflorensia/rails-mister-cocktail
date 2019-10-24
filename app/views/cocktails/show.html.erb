@@ -1,3 +1,30 @@
-<h1><%= @cocktail.name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%= @cocktail.name %></h1>
 
-<%= link_to "Home", cocktails_path %>
+      <h2>
+        Ingredients
+        <%= link_to new_cocktail_dose_path(@cocktail) do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </h2>
+      <ul>
+        <% @doses.each do |dose| %>
+          <div class="d-flex">
+            <li><%= dose.ingredient.name %></li>
+            <li><%= dose.description %></li>
+            <li>
+              <%= link_to dose_path(dose), method: :delete do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            </li>
+          </div>
+        <% end %>
+      </ul>
+
+
+      <%= link_to "See other recipes", cocktails_path, class: "btn btn-ghost" %>
+    </div>
+  </div>
+</div>
