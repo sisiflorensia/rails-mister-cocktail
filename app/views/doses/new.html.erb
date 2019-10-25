@@ -1,24 +1,45 @@
 <div class="container">
+  <h2 class="head text-center"><%= @cocktail.name %></h2>
   <div class="row justify-content-center">
-    <div class="col-md-8">
-      <h1>What do you want in your mix?</h1>
+    <div class="col-md-12 card-product my-3">
+      <div class="col-md-4 card-product-infos m-2">
+          <h3>
+            Current ingredients
+          </h3>
+          <ul>
+            <% @doses.each do |dose| %>
+              <div class="d-flex">
+                <li><%= dose.description %> </li>
+                <li><%= dose.ingredient.name %></li>
+                <li>
+                  <%= link_to dose_path(dose), method: :delete do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-md-8 card-product-infos my-2 pr-10">
+          <h3>What to add?</h3>
 
-      <%= simple_form_for([@cocktail, @dose]) do |f| %>
-        <% if @dose.errors.any? %>
-          <div class="errors-container">
-            <ul>
-              <% @dose.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% else %>
-          <%= f.input :description %>
-          <%= f.association :ingredient %>
-          <%= f.submit "Add into my cocktail!", class: "btn btn-flat" %>
-          <%= link_to "Cancel", cocktails_path, class: "btn btn-ghost" %>
-        <% end %>
-      <% end %>
+          <%= simple_form_for([@cocktail, @dose]) do |f| %>
+            <% if @dose.errors.any? %>
+              <div class="errors-container">
+                <ul>
+                  <% @dose.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% else %>
+              <%= f.input :description %>
+              <%= f.association :ingredient %>
+              <%= f.submit "Add", class: "btn btn-flat my-2" %>
+              <%= link_to "Back to my cocktail", cocktails_path, class: "btn btn-ghost my-2" %>
+            <% end %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
