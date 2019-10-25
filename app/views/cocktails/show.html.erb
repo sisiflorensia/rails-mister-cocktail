@@ -1,29 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1><%= @cocktail.name %></h1>
-
-      <h2>
-        Ingredients
-        <%= link_to new_cocktail_dose_path(@cocktail) do %>
-          <i class="fas fa-plus"></i>
-        <% end %>
-      </h2>
-      <ul>
-        <% @doses.each do |dose| %>
-          <div class="d-flex">
-            <li><%= dose.ingredient.name %></li>
-            <li><%= dose.description %></li>
-            <li>
-              <%= link_to dose_path(dose), method: :delete do %>
-                <i class="fas fa-trash"></i>
-              <% end %>
-            </li>
-          </div>
-        <% end %>
-      </ul>
-
-
+    <div class="col-md-12 mb-200">
+      <div class="card-product my-5">
+        <img src=<%= @cocktail.url %> />
+        <div class="card-product-infos m-2">
+          <h2><%= @cocktail.name %></h2>
+          <h3>
+            Ingredients
+            <%= link_to new_cocktail_dose_path(@cocktail) do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </h3>
+          <ul>
+            <% @doses.each do |dose| %>
+              <div class="d-flex">
+                <li><%= dose.description %> </li>
+                <li><%= dose.ingredient.name %></li>
+                <li>
+                  <%= link_to dose_path(dose), method: :delete do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+      </div>
       <%= link_to "See other recipes", cocktails_path, class: "btn btn-ghost" %>
     </div>
   </div>
