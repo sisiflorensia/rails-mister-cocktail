@@ -4,11 +4,11 @@
       <div class="card-product my-5">
         <img src=<%= @cocktail.url %> />
         <div class="card-product-infos m-2">
-          <h2><%= @cocktail.name %></h2>
+          <h2><%= @cocktail.name.capitalize %></h2>
           <h3>
             Ingredients
             <%= link_to new_cocktail_dose_path(@cocktail) do %>
-              <i class="fas fa-plus"></i>
+              <i class="far fa-edit"></i>
             <% end %>
           </h3>
           <ul>
@@ -16,11 +16,6 @@
               <div class="d-flex">
                 <li><%= dose.description %> </li>
                 <li><%= dose.ingredient.name %></li>
-                <li>
-                  <%= link_to dose_path(dose), method: :delete do %>
-                    <i class="fas fa-trash"></i>
-                  <% end %>
-                </li>
               </div>
             <% end %>
           </ul>
